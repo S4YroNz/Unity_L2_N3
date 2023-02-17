@@ -11,7 +11,6 @@ public class UncouplingFromTheRope : MonoBehaviour
         _joint2D = GetComponent<HingeJoint2D>();
     }
 
-    
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

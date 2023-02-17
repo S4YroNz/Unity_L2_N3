@@ -8,28 +8,19 @@ public class CollisionWithRopes : MonoBehaviour
     private HingeJoint2D _joint;
     private Transform _transform;
 
-    void Start()
+    private void Start()
     {
         _joint = GetComponent<HingeJoint2D>();
         _transform = GetComponent<Transform>();
     }
 
-    
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        
         if (collision.gameObject.name == "Segment8")
         { 
-
-        _joint.enabled = true;
-            Debug.Log(collision.contacts[0].point);
+            _joint.enabled = true;
             _joint.connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
             _joint.anchor = _transform.InverseTransformPoint(collision.contacts[0].point);
-            //_joint.connectedAnchor = new Vector2(collision.contacts[0].point.x, collision.contacts[0].point.y);
         }
     }
 }
